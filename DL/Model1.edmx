@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AGutierrezCRUDBancoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CuentaBancaria">
+          <Key>
+            <PropertyRef Name="IdCuentaBancaria" />
+          </Key>
+          <Property Name="IdCuentaBancaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroDeCuenta" Type="varchar" MaxLength="100" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Titular" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="CuentaBancariaAddRealizarDeposito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumeroDeCuenta" Type="varchar" Mode="In" />
+          <Parameter Name="Saldo" Type="decimal" Mode="In" />
+          <Parameter Name="Titular" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CuentaBancariaDeleteRetirarDeposito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SaldoARetirar" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="CuentaBancariaGetAllConsultaSaldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RetirarDeposito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumeroDeCuenta" Type="varchar" Mode="In" />
+          <Parameter Name="Saldo" Type="decimal" Mode="In" />
+          <Parameter Name="SaldoARetirar" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SumaSaldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="AGutierrezCRUDBancoModelStoreContainer">
+          <EntitySet Name="CuentaBancaria" EntityType="Self.CuentaBancaria" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AGutierrezCRUDBancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CuentaBancaria">
+          <Key>
+            <PropertyRef Name="IdCuentaBancaria" />
+          </Key>
+          <Property Name="IdCuentaBancaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroDeCuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Titular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="AGutierrezCRUDBancoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CuentaBancarias" EntityType="Self.CuentaBancaria" />
+          <FunctionImport Name="CuentaBancariaAddRealizarDeposito">
+            <Parameter Name="NumeroDeCuenta" Mode="In" Type="String" />
+            <Parameter Name="Saldo" Mode="In" Type="Decimal" />
+            <Parameter Name="Titular" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CuentaBancariaGetAllConsultaSaldo" ReturnType="Collection(AGutierrezCRUDBancoModel.CuentaBancariaGetAllConsultaSaldo_Result)" />
+          <FunctionImport Name="CuentaBancariaDeleteRetirarDeposito" ReturnType="Collection(Decimal)">
+          <Parameter Name="SaldoARetirar" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SumaSaldo" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="RetirarDeposito" ReturnType="Collection(Decimal)">
+            <Parameter Name="NumeroDeCuenta" Mode="In" Type="String" />
+            <Parameter Name="Saldo" Mode="In" Type="Decimal" />
+            <Parameter Name="SaldoARetirar" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="CuentaBancariaGetAllConsultaSaldo_Result">
+          <Property Type="Int32" Name="IdCuentaBancaria" Nullable="false" />
+          <Property Type="String" Name="NumeroDeCuenta" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Titular" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AGutierrezCRUDBancoModelStoreContainer" CdmEntityContainer="AGutierrezCRUDBancoEntities">
+          <EntitySetMapping Name="CuentaBancarias">
+            <EntityTypeMapping TypeName="AGutierrezCRUDBancoModel.CuentaBancaria">
+              <MappingFragment StoreEntitySet="CuentaBancaria">
+                <ScalarProperty Name="IdCuentaBancaria" ColumnName="IdCuentaBancaria" />
+                <ScalarProperty Name="NumeroDeCuenta" ColumnName="NumeroDeCuenta" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Titular" ColumnName="Titular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CuentaBancariaAddRealizarDeposito" FunctionName="AGutierrezCRUDBancoModel.Store.CuentaBancariaAddRealizarDeposito" />
+          <FunctionImportMapping FunctionImportName="CuentaBancariaGetAllConsultaSaldo" FunctionName="AGutierrezCRUDBancoModel.Store.CuentaBancariaGetAllConsultaSaldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AGutierrezCRUDBancoModel.CuentaBancariaGetAllConsultaSaldo_Result">
+                <ScalarProperty Name="IdCuentaBancaria" ColumnName="IdCuentaBancaria" />
+                <ScalarProperty Name="NumeroDeCuenta" ColumnName="NumeroDeCuenta" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Titular" ColumnName="Titular" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CuentaBancariaDeleteRetirarDeposito" FunctionName="AGutierrezCRUDBancoModel.Store.CuentaBancariaDeleteRetirarDeposito" />
+          <FunctionImportMapping FunctionImportName="SumaSaldo" FunctionName="AGutierrezCRUDBancoModel.Store.SumaSaldo" />
+          <FunctionImportMapping FunctionImportName="RetirarDeposito" FunctionName="AGutierrezCRUDBancoModel.Store.RetirarDeposito" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

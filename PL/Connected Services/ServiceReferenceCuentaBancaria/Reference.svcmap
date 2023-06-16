@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="6c089781-accf-4a65-8035-f531d3006ac3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56730/ServiceCuentaBancaria.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceCuentaBancaria.xsd" MetadataType="Schema" ID="66e116b9-cca4-4c79-a252-26d78c2c2735" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceCuentaBancaria1.xsd" MetadataType="Schema" ID="1b30c612-9b06-4654-92c5-a8974fe6c2c4" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceCuentaBancaria2.xsd" MetadataType="Schema" ID="8e3fc5d8-bc9e-49ed-bfd5-776eeb974a2a" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceCuentaBancaria3.xsd" MetadataType="Schema" ID="8cb1c5d0-2198-4539-abfc-03744f7a5b4b" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceCuentaBancaria.wsdl" MetadataType="Wsdl" ID="fccf98f8-2fb7-4ff6-981f-6c6acada2656" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?wsdl" />
+    <MetadataFile FileName="ServiceCuentaBancaria4.xsd" MetadataType="Schema" ID="5dc1d3e2-40c7-41a9-b277-604ad773e6e0" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?xsd=xsd4" />
+    <MetadataFile FileName="ServiceCuentaBancaria.disco" MetadataType="Disco" ID="0710b0cb-30fb-41a5-9f5d-f4a9c3da25e0" SourceId="1" SourceUrl="http://localhost:56730/ServiceCuentaBancaria.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

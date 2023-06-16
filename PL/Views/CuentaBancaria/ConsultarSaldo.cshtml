@@ -1,0 +1,39 @@
+﻿@model ML.CuentaBancaria
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="=col-md-12">
+            <h2 style="color:blue; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; text-align:center">Consulta</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <td class="hidden">IdCuentaBancaria</td>
+                        <td>NumeroDeCuenta</td>
+                        <td>Saldo </td>
+                        <td>Titular</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.CuentaBancaria cuentaBancaria in Model.CuentasBancarias)
+                    {
+                        <tr>
+                            <td>@cuentaBancaria.NumeroDeCuenta</td>
+                            <td>@cuentaBancaria.Saldo</td>
+                            <td>@cuentaBancaria.Titular</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

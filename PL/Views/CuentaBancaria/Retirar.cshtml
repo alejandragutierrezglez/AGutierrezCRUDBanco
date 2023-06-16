@@ -1,0 +1,52 @@
+﻿@model ML.CuentaBancaria
+@{
+    ViewBag.Title = "Retirar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h5 style="color:blue; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Indique la cantidad de dinero a retirar y a continuación seleccione Retirar, de lo contrario seleccione Regresar</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Retirar", "CuentaBancaria", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.NumeroDeCuenta)
+                            @Html.TextBoxFor(model => model.NumeroDeCuenta, new { @class = "form-control", @id = "txtNumeroDeCuenta" })
+                            @Html.ValidationMessageFor(model => model.NumeroDeCuenta, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Saldo)
+                            @Html.TextBoxFor(model => model.Saldo, new { @class = "form-control", @id = "txtNumeroDeCuenta" })
+                            @Html.ValidationMessageFor(model => model.Saldo, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.SaldoARetirar)
+                            @Html.TextBoxFor(model => model.SaldoARetirar, new { @class = "form-control", @id = "txtNumeroDeCuenta" })
+                            @Html.ValidationMessageFor(model => model.SaldoARetirar, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Retirar" class="btn btn-success" />
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
